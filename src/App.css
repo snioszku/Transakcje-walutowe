@@ -36,3 +36,27 @@
     transform: rotate(360deg);
   }
 }
+
+.custom-button {
+  color: white;
+  background-color: yellow;
+  border-radius: 8px;
+}
+
+.custom-row {
+  padding: 10px;
+  padding-top: 50px;
+}
+
+.p_list {
+  /*width: 50%;*/
+  display: inline-block;
+  text-align: left;
+}
+
+@media only screen and (min-width: 768px) {
+  .row {
+    padding: 10px;
+    justify-content: center;
+  }
+}
