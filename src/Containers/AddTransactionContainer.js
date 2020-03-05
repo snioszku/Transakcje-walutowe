@@ -9,7 +9,6 @@ class AddTransactionContainer extends Component {
     this.fetchData();
   }
   componentDidUpdate(prevProps) {
-    //this.props.CurrencyRate !== prevProps.CurrencyRate)
     if (
       JSON.stringify(this.props.CurrencyRate) !==
       JSON.stringify(prevProps.CurrencyRate)
@@ -24,7 +23,7 @@ class AddTransactionContainer extends Component {
   }
 
   render() {
-    const { addNewTransaction, CurrencyRate } = this.props;
+    const { addNewTransaction, CurrencyRate, Errors } = this.props;
     // if (isFetching && !todos.length) {
     //   return <p>Loading...</p>;
     // }
@@ -38,13 +37,15 @@ class AddTransactionContainer extends Component {
       <AddTransaction
         addNewTransaction={addNewTransaction}
         CurrencyRate={CurrencyRate}
+        Errors={Errors}
       />
     );
   }
 }
 
-const mapStateToProps = ({ CurrencyRate }) => ({
+const mapStateToProps = ({ CurrencyRate, Errors }) => ({
   CurrencyRate,
+  Errors,
 });
 
 const mapDispatchToProps = dispacht => ({
