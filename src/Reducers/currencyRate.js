@@ -7,8 +7,6 @@ const CurrencyRate = (state = {}, action) => {
         funt: action.response[0].rates[10].mid,
         frank: action.response[0].rates[9].mid,
       };
-    case 'FECHT_ERROR':
-      return console.log(Error);
     default:
       return state;
   }

@@ -1,4 +1,3 @@
-import React from 'react';
 import SumOfTransaction from '../Components/SumOfTransaction';
 import { connect } from 'react-redux';
 
@@ -6,9 +5,10 @@ const getSum = arr => {
   if (arr.length === 0) {
     return 0;
   } else {
-    return parseFloat(
-      arr.map(item => item.exchanged).reduce((prev, curr) => prev + curr),
-    );
+    return arr
+      .map(item => item.exchanged)
+      .reduce((prev, curr) => prev + curr)
+      .toFixed(2);
   }
 };
 

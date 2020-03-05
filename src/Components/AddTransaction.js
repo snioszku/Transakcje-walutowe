@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
-const AddTransaction = ({ addNewTransaction, CurrencyRate }) => {
-  //useEffect(() => FetchRate(), []);
-
+const AddTransaction = ({ addNewTransaction, CurrencyRate, Errors }) => {
   const [transaction, setTransaction] = useState({
     title: '',
     amount: '',
@@ -23,9 +21,14 @@ const AddTransaction = ({ addNewTransaction, CurrencyRate }) => {
 
   return (
     <Form
+      id="form"
       onSubmit={event => {
         event.preventDefault();
-        if (transaction.currency == 0) {
+        if (
+          transaction.currency === 0 ||
+          transaction.amount === '' ||
+          transaction.currency === ''
+        ) {
           alert('wybierz walute');
         } else {
           addNewTransaction(transaction);
@@ -38,31 +41,40 @@ const AddTransaction = ({ addNewTransaction, CurrencyRate }) => {
       }}
     >
       <Row bsPrefix="row custom-row ">
-        <Col xs={12} md lg={12}>
+        <Col xs={12} md={{ span: 8, offset: 2 }} lg={8}>
           <Form.Group controlId="exampleForm.ControlInput1">
-            <Form.Label>Nazwa transakcji</Form.Label>
+            <Form.Label>Nazwa transakcji </Form.Label>
             <Form.Control
               name="title"
               type="text"
               placeholder="Nazwa transakcji"
               value={transaction.title}
               onChange={handleChange}
+              bsPrefix="customform-control "
+              disabled={Errors}
             />
           </Form.Group>
         </Col>
-        <Col xs={12} sm md lg={12}>
+        <Col xs={12} sm md={{ span: 8, offset: 2 }} lg={8}>
           <Form.Group controlId="exampleForm.ControlInput2">
             <Form.Label>Kwota </Form.Label>
             <Form.Control
               name="amount"
               type="number"
+              min="0"
+              step="0.01"
               placeholder="Wpisz kwotę"
               value={transaction.amount}
               onChange={handleChange}
+              bsPrefix="customform-control "
+              disabled={Errors}
             />
           </Form.Group>
         </Col>
-        <Col xs={12} sm md lg={12}>
+        <Col xs={0} lg={6}>
+          {' '}
+        </Col>
+        <Col xs={12} sm md={{ span: 8, offset: 2 }} lg={8}>
           <Form.Group controlId="exampleForm.ControlSelect1">
             <Form.Label> Wybierz walutę </Form.Label>
             <Form.Control
@@ -71,6 +83,8 @@ const AddTransaction = ({ addNewTransaction, CurrencyRate }) => {
               name="currency"
               value={transaction.currency}
               onChange={handleChange}
+              bsPrefix="customform-control "
+              disabled={Errors}
             >
               {' '}
               <option value="">Wybierz z listy </option>
@@ -88,8 +102,10 @@ const AddTransaction = ({ addNewTransaction, CurrencyRate }) => {
         </Col>
       </Row>
       <Row>
-        <Col xs={12} sm md lg={4}>
-          <Button type="submit">Submit form</Button>
+        <Col xs={12} sm md lg={12}>
+          <Button variant="success" type="submit" disabled={Errors}>
+            Submit form
+          </Button>
         </Col>
       </Row>
     </Form>

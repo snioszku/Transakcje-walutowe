@@ -10,7 +10,7 @@ const FetchRate = () => dispatch => {
       error => {
         dispatch({
           type: 'FETCH_ERROR',
-          message: error.message || 'some error',
+          message: 'Could not fetch currency rate. Refresh page',
         });
       },
     );

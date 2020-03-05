@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  scroll-behavior: smooth;
 }
 
 .App-logo {
@@ -45,18 +46,167 @@
 
 .custom-row {
   padding: 10px;
-  padding-top: 50px;
+  /* padding-top: 50px; */
 }
 
 .p_list {
-  /*width: 50%;*/
+  margin-bottom: 0.2rem;
+  /*text-align: left;*/
+}
+
+.item-enter {
+  opacity: 0;
+}
+.item-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.item-exit {
+  opacity: 1;
+  color: #dc3545;
+}
+.item-exit-active {
+  opacity: 0;
+  transition: opacity 500ms ease-in;
+  color: #dc3545;
+}
+
+.list-group-item.item-enter-done {
+  background-color: transparent;
+  transition: background-color 0.6s ease-in-out;
+}
+.list-group-item.item-enter-done:hover {
+  background-color: rgba(219, 219, 223, 0.322);
+}
+.custombutton {
   display: inline-block;
-  text-align: left;
+  font-weight: 400;
+  color: #212529;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  margin-bottom: 20px;
+
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+  padding: 0.2rem 0.6rem;
+  font-size: 0.8rem;
+  line-height: 1;
+}
+.customform-control {
+  display: block;
+  width: 100%;
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid white;
+  border-bottom: 1px solid #28a745;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s;
+}
+.customform-control:focus {
+  outline: none;
+  background-color: rgba(219, 219, 223, 0.322);
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  width: 100%;
+}
+
+@media only screen and (min-width: 320px) {
+  div.col {
+    padding-right: 0px;
+  }
+  a.navbar-brand {
+    font-size: 1rem;
+
+    color: white;
+  }
+  a.navbar-brand:hover {
+    color: #dc3545;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .customlist {
+    max-height: 30vh;
+    overflow-y: scroll;
+  }
+  .App {
+    font-size: 0.8rem;
+  }
+  .btn {
+    font-size: 0.8rem;
+  }
+  ::-webkit-input-placeholder {
+    font-size: 0.8rem;
+  }
+  ::-moz-placeholder {
+    font-size: 0.8rem;
+  }
+  :-ms-input-placeholder {
+    font-size: 0.8rem;
+  }
+  :-moz-placeholder {
+    font-size: 0.8rem;
+  }
+  .customform-control {
+    font-size: 0.8rem;
+  }
+  .btn-success {
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+  }
+  .btn {
+    font-size: 0.8rem;
+  }
+}
+
+@media only screen and (min-width: 576px) {
+  .customlist {
+    max-height: 50vh;
+    overflow-y: scroll;
+  }
+  .p_list:last-of-type {
+    text-align: left;
+    display: inline-block;
+    width: 80%;
+  }
 }
 
 @media only screen and (min-width: 768px) {
-  .row {
-    padding: 10px;
-    justify-content: center;
+  .customlist {
+    max-height: 50vh;
+  }
+  .container + .row {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .customlist {
+    max-height: 80vh;
+  }
+  .custom-row {
+    margin-top: 20px;
   }
 }
